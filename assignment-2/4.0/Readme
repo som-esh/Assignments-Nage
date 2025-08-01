@@ -1,10 +1,7 @@
-In case consul fails to start due to permission denied, just run
-
+################--Run Project--#################
 sudo chown -R 100:100 ./backend/docker
 sudo chmod -R 755 ./backend/docker
-
-################--Run Project--#################
 docker compose build
 docker compose up
 cd frontend && npm install && npm run dev
-################################################
+################################################cd .
