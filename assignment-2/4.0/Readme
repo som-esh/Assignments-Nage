@@ -6,5 +6,5 @@ sudo chmod -R 755 ./backend/docker
 ################--Run Project--#################
 docker compose build
 docker compose up
-cd frontend && npm run dev
+cd frontend && npm install && npm run dev
 ################################################
