@@ -1,0 +1,1 @@
+{"Token":"","Service":{"ID":"cart-service","Service":"cart-service","Tags":null,"Address":"cart-service","Meta":null,"Port":3003,"Weights":{"Passing":1,"Warning":1},"EnableTagOverride":false,"Proxy":{"Mode":"","MeshGateway":{},"Expose":{}},"Connect":{},"PeerName":"","CreateIndex":0,"ModifyIndex":0},"Source":"remote"}
