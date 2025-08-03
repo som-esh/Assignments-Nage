@@ -6,7 +6,7 @@
   let sortField = "name";
   let sortOrder = "asc";
   let currentPage = 1;
-  const itemsPerPage = 10;
+  const itemsPerPage = 9;
 
   // API data and state
   let products = [];

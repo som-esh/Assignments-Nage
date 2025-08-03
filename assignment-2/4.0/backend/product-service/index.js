@@ -30,7 +30,7 @@ function includesIgnoreCase(str, substr) {
 app.get('/', (req, res) => {
   try {
     let filteredProducts = [...products];
-    const { search, sort, order = 'asc', page = '1', limit = '10' } = req.query;
+    const { search, sort, order = 'asc', page = '1', limit = '9' } = req.query;
 
     // Name search filter
     if (search) {

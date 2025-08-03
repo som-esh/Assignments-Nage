@@ -2,7 +2,7 @@
 sudo chown -R $(whoami) ./backend/docker
 sudo chmod -R 755 ./backend/docker
 docker compose build
-docker compose up -d
-cd frontend
-npm install
-npm run dev
+docker compose up
+#cd frontend
+#npm install
+#npm run dev
