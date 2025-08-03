@@ -1,26 +1,21 @@
 <script>
   import { onMount } from "svelte";
-
-  // Reactive state variables
   let searchName = "";
   let sortField = "name";
   let sortOrder = "asc";
   let currentPage = 1;
   const itemsPerPage = 9;
 
-  // API data and state
   let products = [];
   let totalPages = 1;
   let totalItems = 0;
   let loading = false;
   let error = "";
 
-  // Fetch products from backend with query params
   async function fetchProducts() {
     loading = true;
     error = "";
     try {
-      // Build query string parameters
       const params = new URLSearchParams();
       if (searchName.trim() !== "") params.append("search", searchName.trim());
       if (sortField) params.append("sort", sortField);
@@ -48,28 +43,25 @@
     }
   }
 
-  // Load products on mount
   onMount(fetchProducts);
 
-  // Debounce function for search
   let debounceTimeout;
   function handleSearch() {
     clearTimeout(debounceTimeout);
-    currentPage = 1; // Reset to first page when search changes
+    currentPage = 1;
     debounceTimeout = setTimeout(fetchProducts, 300);
   }
 
-  // Handle input changes
   function onSearchNameChange(e) {
     searchName = e.target.value;
     handleSearch();
   }
-  
+
   function onSortFieldChange(e) {
     sortField = e.target.value;
     fetchProducts();
   }
-  
+
   function onSortOrderChange(e) {
     sortOrder = e.target.value;
     fetchProducts();
@@ -117,18 +109,20 @@
     </select>
   </div>
 
-  <!-- Loading/Error -->
   {#if loading}
     <div class="text-center py-8">
-      <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+      <div
+        class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"
+      ></div>
       <p class="mt-2">Loading products...</p>
     </div>
   {:else if error}
     <p class="text-red-600 p-4 bg-red-50 rounded">Error: {error}</p>
   {:else if products.length === 0}
-    <p class="text-center p-8 text-gray-500">No products found matching your criteria.</p>
+    <p class="text-center p-8 text-gray-500">
+      No products found matching your criteria.
+    </p>
   {:else}
-    <!-- Product cards grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       {#each products as product}
         <a
@@ -143,7 +137,9 @@
           <p class="text-gray-600 mb-1">
             Availability:
             <span
-              class={product.availability ? "text-green-600 font-medium" : "text-red-600"}
+              class={product.availability
+                ? "text-green-600 font-medium"
+                : "text-red-600"}
             >
               {product.availability ? " In Stock" : " Out of Stock"}
             </span>
@@ -152,14 +148,21 @@
       {/each}
     </div>
 
-    <!-- Pagination Controls -->
-    <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div
+      class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+    >
       <p class="text-gray-600">
-        Showing <span class="font-medium">{(currentPage - 1) * itemsPerPage + 1}</span> - 
-        <span class="font-medium">{Math.min(currentPage * itemsPerPage, totalItems)}</span> of 
+        Showing <span class="font-medium"
+          >{(currentPage - 1) * itemsPerPage + 1}</span
+        >
+        -
+        <span class="font-medium"
+          >{Math.min(currentPage * itemsPerPage, totalItems)}</span
+        >
+        of
         <span class="font-medium">{totalItems}</span> products
       </p>
-      
+
       <div class="flex space-x-1">
         <button
           class="px-4 py-2 border rounded-md disabled:opacity-50 hover:bg-gray-50"
@@ -172,7 +175,7 @@
         {#each Array(totalPages) as _, i}
           {#if i + 1 === currentPage || i + 1 === currentPage - 1 || i + 1 === currentPage + 1 || i === 0 || i === totalPages - 1}
             <button
-              class={`px-4 py-2 border rounded-md ${currentPage === i + 1 ? 'bg-blue-600 text-white border-blue-600' : 'hover:bg-gray-50'}`}
+              class={`px-4 py-2 border rounded-md ${currentPage === i + 1 ? "bg-blue-600 text-white border-blue-600" : "hover:bg-gray-50"}`}
               on:click={() => changePage(i + 1)}
             >
               {i + 1}

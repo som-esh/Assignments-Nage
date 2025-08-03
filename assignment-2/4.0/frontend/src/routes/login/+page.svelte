@@ -21,9 +21,7 @@
       const data = await res.json();
 
       if (res.ok && data.success) {
-        // Store in Svelte store and localStorage
         setAuth({ userId: data.userId }, data.token || "mock-token");
-        // Redirect to product listing page
         goto("/products");
       } else {
         error = "Invalid username or password.";

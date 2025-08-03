@@ -19,9 +19,7 @@
       const data = await res.json();
 
       if (res.ok && data.success) {
-        // Store userId or session as needed:
         localStorage.setItem("userId", data.userId);
-        // Redirect to your main page, e.g. "/products"
         window.location.href = "/products";
       } else {
         error = "Invalid username or password.";

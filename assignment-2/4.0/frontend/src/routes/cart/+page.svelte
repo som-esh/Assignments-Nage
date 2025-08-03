@@ -16,32 +16,24 @@
 
   $: cartItems = $cart;
 
-  // Calculate total price
   $: total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
-
-  // Handle quantity updates
   function onQuantityChange(id, event) {
     const qty = +event.target.value;
     if (qty >= 1) {
       updateQuantity(id, qty);
     }
   }
-
-  // Remove item
   function onRemove(id) {
     removeFromCart(id);
   }
-
-  // Clear any messages on component destroy
   onDestroy(() => {
     error.set("");
     success.set("");
   });
 
-  // Place Order API call
   async function placeOrder() {
     error.set("");
     success.set("");

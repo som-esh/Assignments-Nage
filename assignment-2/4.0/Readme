@@ -1,3 +1,4 @@
 ################--Run Project--################# 
 Run start.sh 
+To stop run docker compose down in root as well
 ################################################

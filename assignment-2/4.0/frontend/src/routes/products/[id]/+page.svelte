@@ -13,10 +13,8 @@
 
   let quantity = 1;
 
-  // Subscribe to page store to get the "id" param from the URL
   $: productId = $page.params.id;
 
-  // Fetch product details from backend API when component loads or productId changes
   async function fetchProduct(id) {
     loading = true;
     error = "";
@@ -37,8 +35,6 @@
   $: if (productId) {
     fetchProduct(productId);
   }
-
-  // Add product to cart
   function handleAddToCart() {
     if (!product) return;
     if (quantity < 1) {
@@ -47,12 +43,8 @@
     }
     addToCart(product, quantity);
     alert(`Added ${quantity} x ${product.name} to your cart.`);
-    // Optionally navigate to cart page:
-    // goto('/cart');
   }
-  // Add product to cart
   function gotoCart() {
-    // Optionally navigate to cart page:
     goto("/cart");
   }
 </script>

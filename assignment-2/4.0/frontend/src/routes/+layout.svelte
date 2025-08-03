@@ -43,9 +43,6 @@
             >Notifications</a
           >
         </div>
-        <div class="md:hidden">
-          <!-- Mobile menu placeholder -->
-        </div>
       </div>
     </nav>
   </header>

@@ -2,14 +2,9 @@
   import { page } from "$app/stores";
   import { onMount } from "svelte";
 
-  // Get orderId from URL search params or page data (depends on your routing)
   let orderId = "";
 
   $: orderId = $page.url.searchParams.get("orderId") || "";
-
-  // Optionally fetch full order details if backend supports an order lookup API
-
-  // Could add a message or special UI if orderId is missing or invalid
 </script>
 
 <div class="max-w-3xl mx-auto p-6 text-center">

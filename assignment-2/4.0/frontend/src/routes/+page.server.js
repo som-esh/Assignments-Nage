@@ -13,7 +13,6 @@ export async function load({ url, fetch, cookies }) {
   const page = parseInt(url.searchParams.get('page') || '1');
   const perPage = parseInt(url.searchParams.get('perPage') || '10');
   const search = url.searchParams.get('search') || '';
-  // no category if your backend has no such attribute
   const sort = url.searchParams.get('sort') || 'name';
   const order = url.searchParams.get('order') || 'asc';
 
